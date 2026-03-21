@@ -9,7 +9,7 @@ import { QuartzPluginData } from "../../plugins/vfile"
 import { ComponentChildren } from "preact"
 import { concatenateResources } from "../../util/resources"
 import { trieFromAllFiles } from "../../util/ctx"
-import ContentPage from "../ContentPage"  // ← 新增导入
+import Content from "./Content"  // ← 新增导入
 
 interface FolderContentOptions {
   /**
@@ -44,7 +44,7 @@ export default ((opts?: Partial<FolderContentOptions>) => {
     
     if (readmeFile) {
       // 渲染 README 内容页
-      return <ContentPage {...props} file={readmeFile} />
+      return <Content {...props} file={readmeFile} />
     }
     // ========== 新增结束 ==========
 
