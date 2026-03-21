@@ -9,7 +9,6 @@ import { QuartzPluginData } from "../../plugins/vfile"
 import { ComponentChildren } from "preact"
 import { concatenateResources } from "../../util/resources"
 import { trieFromAllFiles } from "../../util/ctx"
-import ContentPage from "../ContentPage"  // ← 新增导入
 
 interface FolderContentOptions {
   /**
@@ -36,17 +35,6 @@ export default ((opts?: Partial<FolderContentOptions>) => {
     if (!folder) {
       return null
     }
-
-    // ========== 新增：检查 README 文件 ==========
-    const readmeFile = allFiles.find(
-      (file) => file.slug === `${fileData.slug}/README`
-    )
-    
-    if (readmeFile) {
-      // 渲染 README 内容页
-      return <ContentPage {...props} file={readmeFile} />
-    }
-    // ========== 新增结束 ==========
 
     const allPagesInFolder: QuartzPluginData[] =
       folder.children
