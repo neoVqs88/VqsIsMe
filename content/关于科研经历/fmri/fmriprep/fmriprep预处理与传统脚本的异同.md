@@ -192,3 +192,5 @@ BOLD → 头动校正 → 层时校正 → 配准到T1 → CompCor噪声估计 �
 你的传统脚本中**层时校正被省略了**，这是一个重要的缺失。fMRIPrep默认做了层时校正，这对TR > 2s的数据尤其重要。
 
 另外，你的传统脚本中带通滤波被注释掉了（`cp rest_gms.nii.gz rest_filt.nii.gz`），意味着实际上**没有做滤波**，而fMRIPrep通过CompCor的高通滤波（128s）间接实现了部分滤波效果。
+
+关于 `fmriprep` 还需要进行的后续步骤，详见[fmriprep补充步骤](关于科研经历/fmri/fmriprep/fmriprep补充步骤)
