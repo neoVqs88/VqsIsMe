@@ -193,4 +193,9 @@ BOLD → 头动校正 → 层时校正 → 配准到T1 → CompCor噪声估计 �
 
 另外，你的传统脚本中带通滤波被注释掉了（`cp rest_gms.nii.gz rest_filt.nii.gz`），意味着实际上**没有做滤波**，而fMRIPrep通过CompCor的高通滤波（128s）间接实现了部分滤波效果。
 
-关于 `fmriprep` 还需要进行的后续步骤，详见[fmriprep补充步骤](关于科研经历/fmri/fmriprep/fmriprep补充步骤)
+## 相关页面
+
+- [[关于科研经历/fmri/fmriprep/你如何阅读一份fmriprep生成报告|fMRIPrep 报告阅读]]：逐项理解预处理产物。
+- [[关于科研经历/fmri/fmriprep/fmriprep补充步骤|fMRIPrep 后处理步骤]]：用于功能连接和 CAPs 前的进一步处理。
+- [[关于科研经历/fmri/fmriprep/配准方法差异|配准方法差异]]。
+- [[关于科研经历/fmri/index|返回 fMRI 专题]]

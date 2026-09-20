@@ -1,4 +1,5 @@
-原文请参考：[]()
+[[关于科研经历/fmri/fmriprep/fmriprep预处理与传统脚本的异同|预处理流程对比]] | [[关于科研经历/fmri/fmriprep/fmriprep试验结果|本地试验结果]]
+
 ## 第一部分：总体声明
 
 ```markdown

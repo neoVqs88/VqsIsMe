@@ -24,3 +24,10 @@ tags:
 - 2009年，“全球平流层修复倡议”成立，**Global Stratospheric Remediation Initiative**，通称**GSRI**。
 
 恐光症
+
+## 项目笔记
+
+- [[Article/photophobia/骑士黄昏|骑士黄昏]]
+- [[Article/photophobia/暴行|暴行]]
+
+[[Article/index|返回创作主页]]

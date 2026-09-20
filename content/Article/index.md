@@ -24,5 +24,21 @@ date: 2026-03-07T00:00:00.000Z
 
 但是呢，其实主要我的理想是有朝一日可以靠文字吃饭。成为科学家当然是我的理想啦，但是我是个吃不得苦的人。虽然我现在发现，写作也是一件相当耗费心力的事情，而且，我绝对成不了一个好的作家。
 
-THANK YOU!!!
-Love U! My Readers!
+## 项目
+
+- [[Article/EvolKing/index|EvolKing]]：末日科幻与多重结局设定。
+- [[Article/火星拯救计划/index|火星拯救计划]]：火星磁场与殖民归乡的科幻构想。
+- [[Article/photophobia/index|photophobia]]：项目笔记与片段。
+- [[Article/天使和最后的哲人王/index|天使和最后的哲人王]]。
+- [[Article/EVA_Program_Sigma/index|EVA Program Sigma]]。
+- [[Article/DND/index|DND]]。
+- [[Article/正义株式会社/人物设计|正义株式会社]]：人物、世界设定与时间线。
+- [[Article/自白（仁爱世界）/index|自白（仁爱世界）]]。
+
+## 其他写作
+
+- [[Article/随而笔之/index|随而笔之]]
+- [[Article/写作练习计划/第一周·第一篇：主动选择|写作练习]]
+- [[Article/结局一览/index|结局一览]]
+
+[[index|返回主页]]

@@ -1,8 +1,4 @@
 ~~~
-
-~~~
-
-~~~
 docker run --rm -it \
     -v /home/gpu/MyConFmriPrep/BIDS:/data:ro \
     -v /home/gpu/MyConFmriPrep/BIDS/derivatives/fmriprep:/out \
@@ -26,3 +22,10 @@ docker run --rm -it \
     --notrack \
     -w /work
 ~~~
+
+## 相关页面
+
+- [[关于科研经历/fmri/fmriprep/fmriprep试验结果|fMRIPrep 试验结果]]
+- [[关于科研经历/fmri/fmriprep/你如何阅读一份fmriprep生成报告|fMRIPrep 报告阅读]]
+- [[关于科研经历/fmri/关于CAPs分析/预处理前置|CAPs 原始预处理方案]]
+- [[关于科研经历/fmri/关于CAPs分析/index|返回 CAPs 分析]]

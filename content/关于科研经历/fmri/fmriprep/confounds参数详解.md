@@ -1,3 +1,5 @@
+[[关于科研经历/fmri/fmriprep/fmriprep补充步骤|fMRIPrep 后处理步骤]] | [[关于科研经历/fmri/关于CAPs分析/index|CAPs 分析]]
+
 ## 📊 FD和DVARS：fMRI质量控制的"仪表盘"
 
 ## 核心概念理解

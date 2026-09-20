@@ -1,3 +1,5 @@
+[[关于科研经历/fmri/关于CAPs分析/K选择工作流|K 选择与稳定性分析]] | [[关于科研经历/fmri/关于CAPs分析/index|CAPs 分析入口]]
+
 ```python
 class CAP(CAPGetter):
 
@@ -58,7 +60,7 @@ class CAP(CAPGetter):
         fixed for the entire instance of the class unless ``self.clear_groups()`` is used.
 ```
 
-这段代码值得注意的地方很多。关于 [parcel_approach]() 的内容，请跳转至另一篇笔记。本笔记主要分析的是结尾部分关于 groups 的使用。
+这段代码值得注意的地方很多。本笔记主要分析结尾部分关于 `groups` 的使用。
 
 ---
 

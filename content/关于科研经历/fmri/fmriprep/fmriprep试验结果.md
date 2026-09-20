@@ -50,3 +50,9 @@ docker run --rm -it \
 ---
 
 对于后两个文件夹，是只使用了 ses-030 进行试验的情形，可以用于更细致地查阅在只有一个输入 session 时的情况。
+
+## 相关页面
+
+- [[关于科研经历/fmri/fmriprep/你如何阅读一份fmriprep生成报告|fMRIPrep 报告阅读]]：检查本次运行的输出和质量控制结果。
+- [[关于科研经历/fmri/fmriprep/fmriprep补充步骤|fMRIPrep 后处理步骤]]：确定输出后的处理方案。
+- [[关于科研经历/fmri/index|返回 fMRI 专题]]

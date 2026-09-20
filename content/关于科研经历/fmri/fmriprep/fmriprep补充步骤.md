@@ -136,3 +136,11 @@ cleaned = clean_img(
 ---
 
 **一句话总结**：fMRIPrep是目前最好的**自动化预处理pipeline**之一，但它不是终点——**你仍然需要做后处理回归和滤波**才能得到可用的功能连接数据。
+
+## 相关页面
+
+- [[关于科研经历/fmri/fmriprep/confounds参数详解|FD、DVARS 与 confounds 参数]]：选择质量控制和回归变量。
+- [[关于科研经历/fmri/fmriprep/噪声回归|CompCor 与噪声回归]]：理解回归量与滤波的原理。
+- [[关于科研经历/fmri/fmriprep/补充步骤2|面向 CAPs 的完整后处理清单]]。
+- [[关于科研经历/fmri/关于CAPs分析/预处理前置|CAPs 原始论文的预处理要求]]。
+- [[关于科研经历/fmri/index|返回 fMRI 专题]]
