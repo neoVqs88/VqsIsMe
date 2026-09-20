@@ -1,3 +1,423 @@
 @use "./base.scss";
+@use "./variables.scss" as *;
 
-// put your custom CSS here!
+:root {
+  --paper-shadow: 0 18px 50px rgba(68, 54, 42, 0.08);
+  --section-accent: var(--secondary);
+}
+
+html {
+  background: var(--light);
+}
+
+body {
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--tertiary) 8%, transparent), transparent 30rem),
+    var(--light);
+  letter-spacing: 0.012em;
+  line-height: 1.82;
+}
+
+body[data-slug^="Article"] {
+  --section-accent: #a85d47;
+}
+
+body[data-slug^="关于科研经历"] {
+  --section-accent: #285b5d;
+}
+
+body[data-slug^="知识点梳理"] {
+  --section-accent: #6b5c8b;
+}
+
+.page {
+  max-width: 1560px;
+}
+
+.page > #quartz-body {
+  column-gap: 3.5rem;
+}
+
+.page > #quartz-body .sidebar.left {
+  border-right: 1px solid color-mix(in srgb, var(--gray) 28%, transparent);
+  padding-right: 2.25rem;
+}
+
+.page-title {
+  letter-spacing: 0.04em;
+}
+
+.page-title a {
+  color: var(--dark);
+}
+
+.page-title a::after {
+  content: "ARCHIVE";
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--section-accent);
+  font-family: var(--codeFont);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+}
+
+.explorer {
+  margin-top: 0.7rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid color-mix(in srgb, var(--gray) 30%, transparent);
+}
+
+button.desktop-explorer h2,
+button.mobile-explorer h2 {
+  color: var(--darkgray);
+  font-family: var(--bodyFont);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.explorer-content .folder-container > div > a {
+  color: var(--darkgray);
+}
+
+.explorer-content ul li > a {
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.35rem;
+  transition: background-color 0.16s ease, color 0.16s ease;
+}
+
+.explorer-content ul li > a:hover,
+.explorer-content ul li > a.active {
+  background: color-mix(in srgb, var(--section-accent) 12%, transparent);
+  color: var(--section-accent);
+}
+
+.center {
+  min-width: 0;
+}
+
+.page-header {
+  margin-bottom: 1.25rem;
+}
+
+.breadcrumbs {
+  font-size: 0.82rem;
+  opacity: 0.72;
+}
+
+.article-title {
+  max-width: 48rem;
+  margin-top: 0.6rem;
+  color: var(--dark);
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.025em;
+  line-height: 1.3;
+}
+
+.article-title::after {
+  content: "";
+  display: block;
+  width: 2.8rem;
+  height: 0.2rem;
+  margin-top: 1rem;
+  background: var(--section-accent);
+}
+
+.content-meta {
+  color: var(--gray);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+}
+
+article {
+  max-width: 48rem;
+  padding-bottom: 3rem;
+  font-size: 1.02rem;
+}
+
+article > p,
+article > ul,
+article > ol {
+  margin-block: 1.15rem;
+}
+
+article h1,
+article h2,
+article h3 {
+  color: var(--dark);
+  letter-spacing: 0.02em;
+  scroll-margin-top: 2rem;
+}
+
+article h2 {
+  margin-top: 2.8rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--gray) 40%, transparent);
+  font-size: 1.48rem;
+}
+
+article h3 {
+  margin-top: 2rem;
+  color: color-mix(in srgb, var(--dark) 85%, var(--section-accent));
+  font-size: 1.16rem;
+}
+
+article a.internal {
+  border-bottom: 1px solid color-mix(in srgb, var(--section-accent) 46%, transparent);
+  border-radius: 0;
+  background: transparent;
+  padding: 0 0.04em;
+  color: var(--section-accent);
+}
+
+article a.internal:hover {
+  background: color-mix(in srgb, var(--section-accent) 10%, transparent);
+}
+
+article blockquote {
+  margin: 1.6rem 0;
+  border-left: 0.22rem solid var(--section-accent);
+  border-radius: 0 0.4rem 0.4rem 0;
+  background: color-mix(in srgb, var(--section-accent) 6%, transparent);
+  color: var(--darkgray);
+  padding: 0.65rem 1.15rem;
+}
+
+article hr {
+  width: 4rem;
+  margin: 2.5rem auto;
+  border: 0;
+  border-top: 1px solid var(--section-accent);
+  opacity: 0.55;
+}
+
+article table {
+  display: table;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--lightgray);
+  border-radius: 0.55rem;
+  box-shadow: 0 0.25rem 1rem rgba(68, 54, 42, 0.04);
+}
+
+article th {
+  background: color-mix(in srgb, var(--section-accent) 10%, var(--light));
+  color: var(--dark);
+}
+
+article tr:nth-child(even) {
+  background: color-mix(in srgb, var(--lightgray) 30%, transparent);
+}
+
+article code {
+  border-radius: 0.28rem;
+  background: color-mix(in srgb, var(--section-accent) 8%, var(--light));
+  color: var(--dark);
+}
+
+article pre {
+  border: 1px solid color-mix(in srgb, var(--gray) 35%, transparent);
+  border-radius: 0.7rem;
+  box-shadow: var(--paper-shadow);
+}
+
+.tag-link {
+  border: 1px solid color-mix(in srgb, var(--section-accent) 32%, transparent);
+  border-radius: 999px !important;
+  background: transparent !important;
+  color: var(--section-accent) !important;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.graph,
+.toc,
+.backlinks {
+  border-top: 1px solid color-mix(in srgb, var(--gray) 32%, transparent);
+  padding-top: 1rem;
+}
+
+.graph > h3,
+.toc > h3,
+.backlinks > h3 {
+  color: var(--darkgray);
+  font-family: var(--bodyFont);
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.backlinks ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.backlinks li {
+  margin-bottom: 0.55rem;
+}
+
+.backlinks a {
+  color: var(--darkgray);
+  font-size: 0.88rem;
+}
+
+.page-footer {
+  max-width: 48rem;
+}
+
+.page-footer .comments {
+  border-top: 1px solid color-mix(in srgb, var(--gray) 32%, transparent);
+  padding-top: 2rem;
+}
+
+footer {
+  color: var(--gray);
+  font-size: 0.8rem;
+}
+
+body[data-slug="index"] .article-title {
+  display: none;
+}
+
+body[data-slug="index"] .page-header {
+  margin-bottom: 0;
+}
+
+body[data-slug="index"] article {
+  max-width: 60rem;
+  padding-top: 1.5rem;
+}
+
+body[data-slug="index"] article::before {
+  content: "VQS / PERSONAL ARCHIVE";
+  display: block;
+  margin-bottom: 0.8rem;
+  color: var(--section-accent);
+  font-family: var(--codeFont);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+body[data-slug="index"] article > p:first-of-type {
+  max-width: 43rem;
+  margin: 0 0 2rem;
+  color: var(--dark);
+  font-family: var(--titleFont);
+  font-size: clamp(1.55rem, 3vw, 2.35rem);
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+body[data-slug="index"] article > hr:first-of-type {
+  width: 100%;
+  margin: 2.2rem 0 1.8rem;
+  border-top-color: color-mix(in srgb, var(--gray) 45%, transparent);
+}
+
+body[data-slug="index"] article > h2:first-of-type {
+  border: 0;
+  margin: 0 0 1rem;
+  padding: 0;
+  font-family: var(--bodyFont);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+}
+
+body[data-slug="index"] article > h2 + ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body[data-slug="index"] article > h2 + ul li {
+  min-height: 8.5rem;
+  border: 1px solid color-mix(in srgb, var(--gray) 42%, transparent);
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--light) 92%, white);
+  box-shadow: 0 0.5rem 1.75rem rgba(68, 54, 42, 0.06);
+  padding: 1.15rem;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+body[data-slug="index"] article > h2 + ul li:hover {
+  transform: translateY(-0.22rem);
+  border-color: var(--section-accent);
+  box-shadow: var(--paper-shadow);
+}
+
+body[data-slug="index"] article > h2 + ul li a {
+  display: block;
+  margin-bottom: 0.55rem;
+  border: 0;
+  color: var(--dark);
+  font-family: var(--titleFont);
+  font-size: 1.2rem;
+}
+
+body[data-slug="index"] article > h2:nth-of-type(2) {
+  margin-top: 3rem;
+  border: 0;
+  font-size: 1.05rem;
+}
+
+body[data-slug^="Article"] article::before,
+body[data-slug^="关于科研经历"] article::before,
+body[data-slug^="知识点梳理"] article::before {
+  display: block;
+  margin-bottom: 1.2rem;
+  color: var(--section-accent);
+  font-family: var(--codeFont);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+body[data-slug^="Article"] article::before {
+  content: "CREATIVE ARCHIVE";
+}
+
+body[data-slug^="关于科研经历"] article::before {
+  content: "RESEARCH NOTES";
+}
+
+body[data-slug^="知识点梳理"] article::before {
+  content: "KNOWLEDGE BASE";
+}
+
+@media all and ($mobile) {
+  .page > #quartz-body {
+    column-gap: 0;
+  }
+
+  .page > #quartz-body .sidebar.left {
+    border-right: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--gray) 28%, transparent);
+  }
+
+  .page-title a::after {
+    display: none;
+  }
+
+  article {
+    font-size: 1rem;
+  }
+
+  article table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  body[data-slug="index"] article > h2 + ul {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-slug="index"] article > h2 + ul li {
+    min-height: auto;
+  }
+}
