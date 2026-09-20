@@ -1,3 +1,12 @@
+---
+tags:
+  - matlab函数
+  - 图像处理
+  - 掩膜提取
+  - 维度重塑
+  - 神经影像
+---
+
 ## 原脚本：
 ~~~
 function res = mapNto1(in,mask)
