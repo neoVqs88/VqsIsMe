@@ -1,0 +1,21 @@
+---
+title: 批量读取 NIfTI 时间点
+draft: true
+tags:
+  - 科研
+---
+
+~~~
+while read Session; do
+    echo "$Session"           # 使用正确的变量名
+    cd ./"$Session" || exit 1
+    cd ./func || exit 1
+    nvols=$(fslinfo rest.nii.gz | grep -w 'dim4' | awk '{print $2}')
+    cd ../..
+    # 正确写入文件（保留所有内容）
+    echo "$Session" >> "dim4.txt"
+    echo "$nvols" >> "dim4.txt"
+    echo "" >> "dim4.txt"      # 添加一个空行（换行）
+    
+done < SessionName.txt
+~~~

@@ -1,7 +1,7 @@
 ---
 aliases:
 tags:
-  - 创作灵感
+  - 灵感
 draft: false
 date: 2026-04-18T00:00:00.000Z
 type:

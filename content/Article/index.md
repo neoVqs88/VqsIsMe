@@ -2,11 +2,7 @@
 title: 我的创作主页
 draft: false
 tags:
-  - 创作理念
-  - 人类尊严
-  - 正义哲学
   - 个人博客
-  - 文学梦想
 aliases:
   - works
 date: 2026-03-07T00:00:00.000Z
