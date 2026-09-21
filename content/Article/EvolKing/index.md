@@ -1,4 +1,5 @@
 ---
+title: EvolKing
 tags:
   - 末日
 ---

@@ -1,4 +1,5 @@
 ---
+title: 随而笔之
 aliases:
 tags:
   - 灵感
