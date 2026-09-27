@@ -28,6 +28,7 @@ date: 2026-03-07T00:00:00.000Z
 - [[Article/天使和最后的哲人王/index|天使和最后的哲人王]]。
 - [[Article/EVA_Program_Sigma/index|EVA Program Sigma]]。
 - [[Article/DND/index|DND]]。
+- [[Article/SCP写作/index|SCP 写作]]：原创 SCP 概念与草稿区。
 - [[Article/正义株式会社/人物设计|正义株式会社]]：人物、世界设定与时间线。
 - [[Article/自白（仁爱世界）/index|自白（仁爱世界）]]。
 
