@@ -1,6 +1,6 @@
 ---
 title: 神经影像方法
-draft: true
+draft: false
 tags:
   - 科研
   - 方法

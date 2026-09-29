@@ -1,6 +1,6 @@
 ---
 title: 多 session 结构-功能耦合分析
-draft: true
+draft: false
 tags:
   - 科研
   - 方法
@@ -50,9 +50,42 @@ C_s = cor(upper_triangle(log(1 + SC_stable)),
 在批量处理前，选择一个具备完整元数据的 DWI 做技术验证：
 
 1. 核对主 DWI、反向相位编码 DWI、bval/bvec 和 JSON 元数据。
-2. 反向相位编码采集都含完整扩散加权 volumes 时，按工具文档使用适配的完整 RPE 模式，例如 micapipe 的 `-rpe_all`。
-3. 检查 eddy/运动估计、校正后的 b=0 与结构像配准、DWI brain mask、组织约束、FOD 和低密度 TDI。
-4. 仅在上述 QC 合格后运行 tractography 和 connectome 生成。
+2. 仅在主 DWI 与反向相位编码 DWI 的梯度表、volume 顺序和相位编码信息已验证可逐 volume 配对时，才使用完整 RPE 模式，例如 micapipe 的 `-rpe_all`。
+3. 若完整 RPE 配对失败或兼容性不能确认，应保留主相位编码的完整 DWI 用于模型与 tractography，并仅用主/反向相位编码的 b=0 pair 进行 susceptibility 校正，例如 micapipe 的 `-rpe_pair -align_seepi`。这会舍弃反向采集的扩散加权 volumes，不能表述为使用了双向完整 DWI。
+4. 检查 eddy/运动估计、校正后的 b=0 与结构像配准、DWI brain mask、组织约束、FOD 和低密度 TDI。
+5. 仅在上述 QC 合格后运行 tractography 和 connectome 生成。
+
+### 反向相位编码模式：为什么会切换，以及改变了什么
+
+DWI 中的 b=0 图像主要提供没有扩散加权的组织对比；扩散加权 volume 则依赖 bval/bvec 描述的扩散敏感方向。反向相位编码（RPE）用于估计 EPI susceptibility distortion，而不是为 tractography 自动增加一套独立的白质信息。
+
+- **`rpe_all`：** 将主采集和反向采集的全部扩散加权 volume 一起用于校正。工具必须能为每个主采集 volume 找到 b 值和梯度方向相匹配、但相位编码相反的 volume。此模式能保留两套采集的扩散加权信息，但配对要求严格。
+- **`rpe_pair`：** 只从主/反向采集中各取 b=0 图像，利用该 b=0 pair 估计畸变场；后续 eddy、扩散模型、FOD 与 tractography 使用主采集的完整 DWI。它不会把反向采集的扩散加权 volume 加入模型。
+
+若 `rpe_all` 报出无法为某个 volume 找到反向相位编码匹配项，常见原因是两套采集在工具解释后的梯度方向、volume 顺序或图像方向不再可一一对应。这不是应当直接手工翻转 bvec 或修改原始 BIDS 元数据的理由；未经独立验证的梯度修改可能使 tractography 方向错误。此时优先改用 `rpe_pair`，保留可靠的主 DWI 与反向 b=0 畸变校正信息，是较保守的选择。
+
+这个切换的代价是最终模型只使用主 DWI 的扩散方向和信噪比，不能宣称为“合并 LR/RL 完整 DWI”的分析。它不会改变原始数据，也不等同于修复了梯度表问题；它只是选择了不需要逐扩散方向配对的有效校正路径。
+
+### 三个状态不能混淆
+
+1. **流程完成：** 软件报告 `COMPLETED`，只证明命令、依赖和文件生成路径没有阻止流程结束。
+2. **DWI QC 合格：** 需人工确认 eddy/TOPUP、b=0-T1 配准、brain mask、FOD 与低密度 TDI 没有明显伪影或解剖错配。
+3. **SC 可用于分析：** DWI QC 合格后完成 tractography/connectome，并确认 atlas、ROI 标签顺序、边权定义与后续 FC 一致。
+
+因此，`COMPLETED` 是继续查看 QC 的条件，不是直接解释 SC-FC coupling 的依据。
+
+### DWI QC 的最小阅读顺序
+
+1. 在 `eddy_quad` 报告中查看运动、outlier slice、残差和信号异常；寻找明显的条纹、大片 dropout 或异常高的 outlier 比例。
+2. 查看校正后 b=0 与 T1 的叠加图，确认脑轮廓和主要脑室没有系统性错位。
+3. 查看 DWI brain mask 和 5TT，确认没有大面积漏掉皮层或包含颅骨、眼眶等非脑组织。
+4. 查看 WM FOD 与低密度 TDI，确认主要白质束区域有连续合理的信号，且没有明显的边界截断或全脑方向性异常。
+
+outlier 的可接受性不能只用一个通用百分比阈值决定。若 outlier 异常高、且集中于单一 b-shell，即使平均头动较低，也应先检查该壳层对应的平均图、残差图与受影响 volume；这可能反映壳层特异的 dropout、伪影或校正问题。未解释的高 outlier 不应通过“继续运行 SC”来验证。
+
+若预期的 eddy 报告未出现，先确认 `proc_dwi` 是否报告完成，并列出 QC 目录和关键 DWI 衍生物。缺少报告本身不等同于影像校正失败，但在没有替代 QC 图的情况下，也不能据此批准 tractography。
+
+任何一项明显失败时，应停在 DWI 阶段排查，而不是通过继续运行 SC 来“看看结果”。
 
 SC 的 tractography 参数、atlas、边权定义和后处理必须跨 session 保持一致。streamline 数是计算采样参数，不是生物学纤维数量。
 
