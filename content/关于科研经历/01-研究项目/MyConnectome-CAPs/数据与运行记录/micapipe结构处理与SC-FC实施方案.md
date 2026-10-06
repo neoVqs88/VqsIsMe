@@ -26,7 +26,7 @@ tags:
 | --- | --- | --- |
 | Docker 与 micapipe 镜像 | 已确认可用 | 不代表处理已完成。 |
 | 固定结构锚点 | 完成，QC 已确认 | 已运行结构、表面和 Schaefer-400 atlas 模块。 |
-| DWI pilot | 自动 QC 警报，暂停 SC | `-rpe_all` 在 volume 配对阶段失败后，以 `rpe_pair` 完成 `proc_dwi` 的 11/11 步；eddy 报告显示总 outlier slice 比例 34.2%，且集中于一个壳层，须完成视觉 QC 后再决定是否重处理或排除。 |
+| DWI pilot | 可进行单 session SC pilot | `-rpe_all` 在 volume 配对阶段失败后，以 `rpe_pair` 完成 `proc_dwi` 的 11/11 步；eddy 报告有壳层特异的高 outlier 警报，但讨论后未收到停止或重处理的重大问题反馈。仅批准 `ses-013` 的 SC pilot，之后仍需 tractography/connectome QC。 |
 | FC 提取 | 方案已确定 | 尚未批量提取或验证 parcel 对应。 |
 | 稳定 SC 与 coupling | 未开始 | 需在各项 QC 后预先固定规则。 |
 
@@ -68,6 +68,9 @@ runner 的 `qc-dwi <ses-XXX>` 命令只列出本次处理的 QC card、eddy 报�
 
 - [[关于科研经历/06-科研日志/2026-09-27|2026-09-27 科研日志]]
 - [[关于科研经历/06-科研日志/2026-09-28|2026-09-28 科研日志]]
+- [[关于科研经历/06-科研日志/2026-10-06|2026-10-06 科研日志]]
+- [[关于科研经历/01-研究项目/MyConnectome-CAPs/数据与运行记录/micapipe runner 使用指南|项目 runner 使用指南]]
+- [[关于科研经历/02-方法库/神经影像/micapipe DWI 到结构连接工作流|micapipe DWI 到 SC 工作流]]
 - [[关于科研经历/02-方法库/神经影像/多session结构-功能耦合分析|可复用的 SC-FC 方法]]
 - [[关于科研经历/01-研究项目/MyConnectome-CAPs/质量控制/index|项目质量控制]]
 

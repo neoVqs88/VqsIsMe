@@ -136,6 +136,7 @@ SC 的 tractography 参数、atlas、边权定义和后处理必须跨 session �
 
 ## 相关项目实践
 
+- [[关于科研经历/02-方法库/神经影像/micapipe DWI 到结构连接工作流|micapipe DWI 到 SC 工作流]]：从 DWI 输入、RPE 选择、QC 到 connectome 的可复用步骤。
 - [[关于科研经历/01-研究项目/MyConnectome-CAPs/数据与运行记录/micapipe结构处理与SC-FC实施方案|MyConnectome 的 micapipe 实施方案]]
 
 ## 参考文献
