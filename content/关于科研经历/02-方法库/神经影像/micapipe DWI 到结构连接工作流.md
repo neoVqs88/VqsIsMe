@@ -14,7 +14,19 @@ tags:
 
 本笔记说明如何将 BIDS 格式的 DWI 通过 micapipe 转为可审查的个体结构连接（SC）。适用于单个或多个 DWI session 均可用、并且已有可用 T1w 结构处理结果的情形。
 
-它描述的是可复现的处理与质量控制框架，不保证任意 DWI 都适合 tractography，也不将 streamline 或 connectome 边权解释为真实轴突数量。
+它描述的是可复现的处理与质量控制框架。
+
+## 它不以 fMRIPrep 输出为输入
+
+micapipe 的 DWI-SC 流程读取原始 BIDS 的 T1w、DWI、bval、bvec 和采集 JSON；它不读取 fMRIPrep 的预处理 BOLD 或 confounds。
+
+| 工具/阶段 | 输入模态 | 输出 | 在结构-功能研究中的角色 |
+| --- | --- | --- | --- |
+| micapipe 结构与 DWI/SC | T1w、DWI 与采集元数据 | 表面、atlas、FOD、tractogram、SC | 提供结构估计。 |
+| fMRIPrep 与 BOLD 后处理 | BOLD、T1w 与采集元数据 | 预处理 BOLD、confounds、clean BOLD | 提供用于 FC 的时间序列。 |
+| FC/coupling 分析 | clean BOLD、atlas、SC | FC 与 SC-FC coupling | 在标签严格对应后整合两种结果。 |
+
+因此，已有 fMRIPrep 数据不表示可以跳过 DWI 的 micapipe 处理；反过来，micapipe 也不替代既定的 FC 预处理定义。
 
 ## 处理链条
 

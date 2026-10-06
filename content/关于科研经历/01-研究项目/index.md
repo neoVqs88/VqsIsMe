@@ -9,6 +9,6 @@ tags:
 
 ## 项目
 
-- [[关于科研经历/01-研究项目/MyConnectome-CAPs/index|MyConnectome CAPs]]
+- [[关于科研经历/01-研究项目/MyConnectome/index|MyConnectome]]
 
 [[关于科研经历/index|返回科研经历]]

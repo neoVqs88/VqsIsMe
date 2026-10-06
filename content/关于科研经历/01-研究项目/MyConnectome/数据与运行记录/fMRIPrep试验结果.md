@@ -55,4 +55,4 @@ docker run --rm -it \
 
 - [[关于科研经历/02-方法库/fMRI预处理/fMRIPrep/fMRIPrep报告阅读|fMRIPrep 报告阅读]]：检查本次运行的输出和质量控制结果。
 - [[关于科研经历/02-方法库/fMRI预处理/fMRIPrep/fMRIPrep后处理步骤|fMRIPrep 后处理步骤]]：确定输出后的处理方案。
-- [[关于科研经历/01-研究项目/MyConnectome-CAPs/数据与运行记录/index|返回数据与运行记录]]
+- [[关于科研经历/01-研究项目/MyConnectome/数据与运行记录/index|返回数据与运行记录]]

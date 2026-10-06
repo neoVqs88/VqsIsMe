@@ -1,4 +1,4 @@
-[[关于科研经历/01-研究项目/MyConnectome-CAPs/聚类与统计/CAPs的K值稳定性分析|K 选择与稳定性分析]] | [[关于科研经历/02-方法库/CAPs/index|CAPs 方法库]]
+[[CAPs的K值稳定性分析|K 选择与稳定性分析]] | [[关于科研经历/02-方法库/CAPs/index|CAPs 方法库]]
 
 ```python
 class CAP(CAPGetter):

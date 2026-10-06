@@ -1,4 +1,4 @@
-[[关于科研经历/02-方法库/fMRI预处理/fMRIPrep/fMRIPrep与传统流程对比|预处理流程对比]] | [[关于科研经历/01-研究项目/MyConnectome-CAPs/数据与运行记录/fMRIPrep试验结果|本地试验结果]]
+[[关于科研经历/02-方法库/fMRI预处理/fMRIPrep/fMRIPrep与传统流程对比|预处理流程对比]] | [[fMRIPrep试验结果|本地试验结果]]
 
 ## 第一部分：总体声明
 

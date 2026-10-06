@@ -25,7 +25,7 @@ docker run --rm -it \
 
 ## 相关页面
 
-- [[关于科研经历/01-研究项目/MyConnectome-CAPs/数据与运行记录/fMRIPrep试验结果|fMRIPrep 试验结果]]
+- [[fMRIPrep试验结果|fMRIPrep 试验结果]]
 - [[关于科研经历/02-方法库/fMRI预处理/fMRIPrep/fMRIPrep报告阅读|fMRIPrep 报告阅读]]
 - [[关于科研经历/02-方法库/CAPs/CAPs原始预处理方案|CAPs 原始预处理方案]]
-- [[关于科研经历/01-研究项目/MyConnectome-CAPs/数据与运行记录/index|返回数据与运行记录]]
+- [[关于科研经历/01-研究项目/MyConnectome/数据与运行记录/index|返回数据与运行记录]]

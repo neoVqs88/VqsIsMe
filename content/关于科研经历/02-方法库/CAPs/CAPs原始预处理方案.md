@@ -31,6 +31,6 @@ were preprocessed identically except not including the GSR step.
 ## 相关页面
 
 - [[关于科研经历/02-方法库/fMRI预处理/fMRIPrep/面向CAPs的后处理流程|从 fMRIPrep 到 CAPs 的后处理清单]]
-- [[关于科研经历/01-研究项目/MyConnectome-CAPs/质量控制/预处理质量评分任务|预处理质量评分任务]]
-- [[关于科研经历/01-研究项目/MyConnectome-CAPs/聚类与统计/CAPs的K值稳定性分析|K 选择工作流]]
+- [[预处理质量评分任务|预处理质量评分任务]]
+- [[CAPs的K值稳定性分析|K 选择工作流]]
 - [[关于科研经历/02-方法库/CAPs/index|返回 CAPs 方法库]]

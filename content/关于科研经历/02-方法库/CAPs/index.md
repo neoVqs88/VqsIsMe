@@ -16,8 +16,4 @@ tags:
 - [[关于科研经历/02-方法库/CAPs/CAPs原始预处理方案|CAPs 原始预处理方案]]
 - [[关于科研经历/02-方法库/CAPs/CAPs分组分析|CAPs 分组分析]]
 
-## 项目实践
-
-- [[关于科研经历/01-研究项目/MyConnectome-CAPs/index|MyConnectome CAPs]]
-
 [[关于科研经历/02-方法库/index|返回方法库]]
