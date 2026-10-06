@@ -1,5 +1,5 @@
 ---
-title: 科研日志 <% tp.date.now("YYYY-MM-DD") %>
+title: <% tp.date.now("YYYY-MM-DD") %>
 draft: true
 tags:
   - 科研
@@ -10,7 +10,7 @@ recording_status: active
 project:
 ---
 
-# 科研日志 - <% tp.date.now("YYYY-MM-DD") %>
+# <% tp.date.now("YYYY-MM-DD") %>
 
 > 只记录已执行、已观察或已确认的内容。计划、推测和待验证事项必须明确标注；命令中的用户名、主机和绝对路径使用占位符。
 
