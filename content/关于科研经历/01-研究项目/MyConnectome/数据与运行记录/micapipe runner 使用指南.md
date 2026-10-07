@@ -33,7 +33,7 @@ tags:
 
 项目中固定结构锚点与 DWI session 可以不同：结构像提供稳定的表面、组织分割和 atlas，DWI session 提供扩散方向信息。这样做不把单次 DWI 的差异直接解释为短期白质重塑。
 
-## micapipe 与 fMRIPrep 的输入输出边界
+## micapipe 与 fMRIPrep 的输入输出
 
 这两个工具服务于不同数据模态，不能互相替代。
 
@@ -87,8 +87,9 @@ THREADS=12 TRACTS=5M <RUNNER_DIR>/run_myconnectome_micapipe.sh sc ses-013 --revi
 
 ### 2. 保护机制
 
-- `set -Eeuo pipefail`：未定义变量、失败命令或管道失败都会停止脚本，避免错误被悄悄忽略。
+- `set -Eeuo pipefail`：未定义变量、失败命令或管道失败都会停止脚本，避免错误被忽略。
 - 原始 BIDS 在 Docker 中以只读方式挂载；micapipe 输出、日志和临时文件写入项目工作目录。
+- 对 NFS 输出目录，优先挂载已验证可访问的项目或 derivatives 父目录，而不是临时单独挂载深层 session/connectomes 子目录；Docker daemon 可能因嵌套路径权限而拒绝后者。
 - `prepare_environment` 在每次处理前检查 Docker、镜像、license 和必要目录。
 - `validate_dwi` 检查 LR/RL NIfTI、bval、bvec、JSON 是否齐全，并确认相位编码方向相反、readout time 相同。
 - `require_structural_qc` 确保存在结构 QC card 后才允许 DWI 或 SC。
@@ -97,7 +98,7 @@ THREADS=12 TRACTS=5M <RUNNER_DIR>/run_myconnectome_micapipe.sh sc ses-013 --revi
 
 ### 3. Docker 调用
 
-`run_micapipe` 统一构造 Docker 命令：挂载输入、输出、临时目录和 FreeSurfer license，然后将具体 micapipe 参数附加到容器命令。每次运行同时写入带时间戳的日志，因此终端中断后仍可追溯实际参数和错误信息。
+`run_micapipe` 会统一构造 Docker 命令：挂载输入、输出、临时目录和 FreeSurfer license，然后将具体 micapipe 参数附加到容器命令。每次运行同时写入带时间戳的日志，因此终端中断后仍可追溯实际参数和错误信息。
 
 ## 子命令：何时使用、做了什么
 
@@ -130,6 +131,7 @@ THREADS=12 TRACTS=5M <RUNNER_DIR>/run_myconnectome_micapipe.sh sc ses-013 --revi
 ## 相关笔记
 
 - [[micapipe结构处理与SC-FC实施方案|项目实施方案与当前状态]]
+- [[可复现命令/从450节点connectome派生400皮层SC|450 节点到 400 皮层 SC 的可复现命令]]
 - [[关于科研经历/02-方法库/神经影像/micapipe DWI 到结构连接工作流|可复用的 micapipe DWI 到 SC 方法]]
 - [[关于科研经历/02-方法库/神经影像/多session结构-功能耦合分析|后续 SC-FC coupling 方法]]
 

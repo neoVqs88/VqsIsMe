@@ -112,6 +112,26 @@ T1w 结构处理与 atlas
 
 SC 后检查 tractography/TDI 的空间分布、connectome 是否存在异常空行列，以及 ROI 标签和行列顺序。矩阵维度相同不证明节点一一对应；后续与 FC 比较前必须程序化验证标签和顺序。
 
+micapipe 可将 atlas 级 connectome 写为 GIFTI `shape.gii`，并删除转换前的中间文本矩阵；这不是处理失败。是否保存完整 `.tck` tractogram 也取决于运行时的保留选项。若需要日后独立重算多种边权或追踪 QC，应在计算前决定是否保留 tractogram，并记录该选择。
+
+micapipe v0.2.3 的 SC 脚本调用 `tck2connectome` 时未加入 `-symmetric`。MRtrix 因此将无向边保存在上三角，低三角为零；直接检查会得到“非对称”结果。对无向网络分析，应保留该原始上三角版本以供审计，并创建 `upper + upper.T` 的对称副本，将对角线设为零。不要将上三角编码直接与对称 FC 矩阵相关。
+
+### 方法原则如何落到检查
+
+方法论不是在流程末尾才检查一次，而是每次转换数据表示时都验证以下五件事：
+
+| 转换 | 要保持什么 | 最小验证 | 不通过时的含义 |
+| --- | --- | --- | --- |
+| 原始 DWI -> 预处理 DWI | 采集元数据、扩散方向与图像质量。 | PE/readout 元数据、eddy 报告、b=0-T1、mask、FOD。 | 不能安全进入 tractography。 |
+| FOD/5TT -> tractography | 组织约束与空间解剖合理性。 | TDI/tractogram 与 b=0 的空间检查。 | SC 可能由错误路径主导。 |
+| 全 atlas -> 皮层 SC | 节点集合和标签顺序。 | LUT、矩阵维度、标签数、节点索引。 | 不能与皮层 FC 配对。 |
+| 上三角编码 -> 无向 SC | 边权总量和无向性。 | 下三角为零、镜像后对称、对角线为零。 | 不能将原始存储格式当作网络矩阵。 |
+| SC + FC -> coupling | 同一节点和同一边集合。 | 程序化比较标签、顺序、矩阵维度和纳入边规则。 | 任何 coupling 数值都没有可解释性。 |
+
+每一次检查应同时记录：输入是什么、产生了什么、检查证据是什么、尚存何种限制，以及该限制是否阻止下一阶段。项目日志记录具体证据；项目实施方案记录当前放行状态；本方法笔记解释一般原则。
+
+对于 micapipe v0.2.3 的完整 `Schaefer-400` connectome，内置 LUT 合并 48 个皮层下/小脑节点、2 个 medial-wall 占位节点和 400 个皮层 parcel，得到 450 x 450 矩阵。若主分析只使用 400 个皮层节点，必须依据同版本 LUT 生成标签表后再切分；该版本按升序 `mics` 排序时，皮层索引为 `49:249` 与 `250:450`（Python 半开区间）。不要依据“前 400 行列”或矩阵尺寸猜测节点对应关系。
+
 ## 常见失败与处理原则
 
 | 现象 | 不应做的事 | 首选下一步 |
@@ -121,6 +141,8 @@ SC 后检查 tractography/TDI 的空间分布、connectome 是否存在异常空
 | `rpe_all` volume 配对失败 | 盲目修改 bvec。 | 验证兼容性；必要时使用 b=0 pair。 |
 | 软件完成但 eddy outlier 高 | 直接运行 SC。 | 阅读报告、平均 b-shell 和残差图。 |
 | SC 矩阵已生成 | 立即解释边权为生物学纤维数量。 | 先完成 tractography、标签和跨 session QC。 |
+| Docker 无法挂载深层 NFS 输出目录 | 认为影像输出丢失或修改原始权限。 | 挂载已验证可访问的较高层项目/derivatives 目录，并在容器内使用相对路径访问子目录。 |
+| micapipe 容器中 `python` 缺少 `nibabel` | 直接以 `--entrypoint python` 重试。 | 使用镜像的 `/neurodocker/startup.sh` entrypoint 激活 micapipe conda 环境，再执行 `python`。 |
 
 ## 可解释范围
 
